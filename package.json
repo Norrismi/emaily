@@ -4,13 +4,17 @@
   "main": "index.js",
   "engines": {
     "node": "9.2.0",
-    "npm": "5.8.0"
+    "npm": "5.8.0",
+    "yarn": "1.6.0"
   },
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "yarn --cwd client start",
-    "dev": "concurrently 'yarn server'  'yarn client' "
+    "dev": "concurrently 'yarn server'  'yarn client' ",
+    "client-install": "(cd ./client && yarn install)",
+    "client-build": "(cd ./client && yarn run build)",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn run client-install && yarn run client-build"
   },
   "license": "MIT",
   "dependencies": {
